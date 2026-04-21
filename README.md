@@ -30,6 +30,7 @@ This list complements [`microsoft/mcp`](https://github.com/microsoft/mcp) — th
 - [Developer Tools & Microsoft Learn](#developer-tools--microsoft-learn)
 - [Playwright & Browser Automation](#playwright--browser-automation)
 - [MCP Clients in Microsoft Products](#mcp-clients-in-microsoft-products)
+- [Community servers in this repo](#community-servers-in-this-repo)
 - [Starters & Templates](#starters--templates)
 - [Security & Governance](#security--governance)
 - [Learning Resources](#learning-resources)
@@ -133,6 +134,16 @@ Where MCP is **consumed** inside Microsoft tooling today:
 - **GitHub Copilot CLI** — Native MCP server support for any MCP-compatible tool.
 - **Microsoft Copilot Studio** — Add MCP servers as *actions* from a no-code builder. [Docs](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-mcp).
 - **Microsoft Agent Framework** (.NET / Python) — `Microsoft.Agents.AI` + the C# `ModelContextProtocol` SDK / Python `mcp` SDK for connecting agents to any MCP server.
+
+---
+
+## Community servers in this repo
+
+Reference implementations maintained in this repository. Every server ships a multi-arch image on GHCR with SBOM + build provenance. See [`servers/`](./servers/) for the index and conventions.
+
+- 🐳 **[`azure-resource-graph-mcp`](./servers/azure-resource-graph-mcp/)** — Read-only Azure inventory via **Resource Graph + KQL**. Answer natural-language questions about your estate (*"VMs in eastus > 16 GB?"*). Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/azure-resource-graph-mcp:latest`.
+
+> 🚧 Roadmap: `microsoft-learn-search-mcp`, `github-models-mcp`, `azure-openai-deployments-mcp`. PRs welcome.
 
 ---
 
