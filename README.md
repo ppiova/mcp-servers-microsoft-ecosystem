@@ -178,11 +178,11 @@ Production-ready templates to bootstrap your own MCP server for Microsoft servic
 
 - 🎙️ [**Crea tus propios Agentes de IA con Azure AI Foundry**](https://www.youtube.com/watch?v=dklTcCMSLsU) — *Microsoft Reactor, ES*, Pablo Piovano.
 - 🎙️ [**Introducción al Agent Framework y agentes individuales**](https://developer.microsoft.com/en-us/reactor/events/26463/) — *Microsoft Reactor, ES*, Pablo Piovano.
-- 🎙️ [**MCP: Model Context Protocol**](https://www.youtube.com/watch?v=2wgiWC4l7Cw) — *Global AI Bootcamp 2025 Rosario*, Pablo Piovano.
+- 🎙️ [**Integración de MCP con LLMs**](https://reactor.microsoft.com/es-es/reactor/events/26167/) — Microsoft Reactor, ES*, Pablo Piovano.
 
 ### Articles
-
-- 📝 [Workflows en Microsoft Foundry](https://dev.to/ppiova/workflows-en-microsoft-foundry-1e5k) — dev.to.
+- 📝 [LinkedIn Articles](https://www.linkedin.com/in/ppiova/recent-activity/articles/) — LinkedIn.
+- 📝 [DEV.TO](https://dev.to/ppiova) — dev.to.
 
 ### Books
 
