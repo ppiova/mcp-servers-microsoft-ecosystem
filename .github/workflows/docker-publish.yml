@@ -42,6 +42,10 @@ jobs:
             context: ./servers/microsoft-learn-search-mcp
             title: "Microsoft Learn Search MCP Server"
             description: "Self-hostable MCP server for searching Microsoft Learn docs and fetching articles as Markdown."
+          - name: azure-openai-deployments-mcp
+            context: ./servers/azure-openai-deployments-mcp
+            title: "Azure OpenAI Deployments MCP Server"
+            description: "FinOps-friendly MCP server listing Azure OpenAI accounts, deployments and quota usages."
 
     steps:
       - name: Checkout
