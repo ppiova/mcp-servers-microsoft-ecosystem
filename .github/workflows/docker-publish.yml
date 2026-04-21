@@ -38,6 +38,10 @@ jobs:
             context: ./servers/azure-resource-graph-mcp
             title: "Azure Resource Graph MCP Server"
             description: "Read-only Azure inventory via Resource Graph + KQL over MCP."
+          - name: microsoft-learn-search-mcp
+            context: ./servers/microsoft-learn-search-mcp
+            title: "Microsoft Learn Search MCP Server"
+            description: "Self-hostable MCP server for searching Microsoft Learn docs and fetching articles as Markdown."
 
     steps:
       - name: Checkout

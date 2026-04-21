@@ -142,8 +142,9 @@ Where MCP is **consumed** inside Microsoft tooling today:
 Reference implementations maintained in this repository. Every server ships a multi-arch image on GHCR with SBOM + build provenance. See [`servers/`](./servers/) for the index and conventions.
 
 - 🐳 **[`azure-resource-graph-mcp`](./servers/azure-resource-graph-mcp/)** — Read-only Azure inventory via **Resource Graph + KQL**. Answer natural-language questions about your estate (*"VMs in eastus > 16 GB?"*). Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/azure-resource-graph-mcp:latest`.
+- 🐳 **[`microsoft-learn-search-mcp`](./servers/microsoft-learn-search-mcp/)** — Search Microsoft Learn docs + fetch articles as Markdown. **No auth, zero setup.** Grounds your agent in canonical Microsoft docs. Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/microsoft-learn-search-mcp:latest`.
 
-> 🚧 Roadmap: `microsoft-learn-search-mcp`, `github-models-mcp`, `azure-openai-deployments-mcp`. PRs welcome.
+> 🚧 Roadmap: `github-models-mcp`, `azure-openai-deployments-mcp`, `copilot-studio-mcp`. PRs welcome.
 
 ---
 

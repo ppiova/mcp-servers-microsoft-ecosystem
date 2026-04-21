@@ -6,8 +6,9 @@ Each subfolder is a self-contained, production-grade reference implementation.
 | Server | Docker image | What it exposes |
 | ------ | ------------ | --------------- |
 | [`azure-resource-graph-mcp`](./azure-resource-graph-mcp/) | `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/azure-resource-graph-mcp:latest` | Read-only Azure inventory via Resource Graph + KQL. |
+| [`microsoft-learn-search-mcp`](./microsoft-learn-search-mcp/) | `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/microsoft-learn-search-mcp:latest` | Search Microsoft Learn docs + fetch articles as Markdown. No auth. |
 
-> 🚧 More servers land iteratively. Good candidates on the roadmap: `microsoft-learn-search-mcp`, `github-models-mcp`, `azure-openai-deployments-mcp`. **PRs welcome** — see the [contribution guide](../CONTRIBUTING.md).
+> 🚧 More servers land iteratively. Good candidates on the roadmap: `github-models-mcp`, `azure-openai-deployments-mcp`. **PRs welcome** — see the [contribution guide](../CONTRIBUTING.md).
 
 ## Conventions
 
