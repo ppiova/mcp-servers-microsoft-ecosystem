@@ -1,0 +1,53 @@
+name: Check links
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 9 * * 1"   # every Monday 09:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+
+      - name: Run lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --cache
+            --max-cache-age 1d
+            --exclude-mail
+            --accept 200,206,403,429
+            --timeout 20
+            README.md CONTRIBUTING.md
+          fail: ${{ github.event_name == 'pull_request' }}
+
+      - name: Create issue for broken links (on schedule only)
+        if: ${{ github.event_name == 'schedule' && steps.lychee.outputs.exit_code != '0' }}
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "🔗 Broken links detected by weekly lychee run"
+          content-filepath: ./lychee/out.md
+          labels: broken-links, automated
