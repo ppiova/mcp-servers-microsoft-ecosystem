@@ -26,11 +26,11 @@ A **read-only**, **lightweight** MCP server that exposes your Azure estate throu
 
 ## Example natural-language questions the agent can now answer
 
-> "¿Qué VMs tengo corriendo en `eastus2` con más de 16 GB de RAM?"
+> "Which VMs do I have running in `eastus2` with more than 16 GB of RAM?"
 >
-> "List all storage accounts across all subscriptions where replication is LRS and region is not westeurope."
+> "List all storage accounts across all subscriptions where replication is LRS and the region is not westeurope."
 >
-> "Dame las 5 suscripciones con más resources y las 3 regiones más usadas."
+> "Give me the 5 subscriptions with the most resources and the 3 most used regions."
 >
 > "Find every resource tagged `env=prod` that doesn't have an `owner` tag."
 
