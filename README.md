@@ -144,8 +144,9 @@ Reference implementations maintained in this repository. Every server ships a mu
 - 🐳 **[`azure-resource-graph-mcp`](./servers/azure-resource-graph-mcp/)** — Read-only Azure inventory via **Resource Graph + KQL**. Answer natural-language questions about your estate (*"VMs in eastus > 16 GB?"*). Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/azure-resource-graph-mcp:latest`.
 - 🐳 **[`microsoft-learn-search-mcp`](./servers/microsoft-learn-search-mcp/)** — Search Microsoft Learn docs + fetch articles as Markdown. **No auth, zero setup.** Grounds your agent in canonical Microsoft docs. Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/microsoft-learn-search-mcp:latest`.
 - 🐳 **[`azure-openai-deployments-mcp`](./servers/azure-openai-deployments-mcp/)** — FinOps-friendly inventory of your Azure OpenAI **accounts, deployments and region quotas**. Great for *"where is gpt-4o-mini deployed and how much capacity is left?"* Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/azure-openai-deployments-mcp:latest`.
+- 🐳 **[`github-models-mcp`](./servers/github-models-mcp/)** — Bridge any MCP client to the **free-tier GitHub Models** (OpenAI GPT-4.1, Microsoft Phi-4, Meta Llama 3.3, Mistral, Cohere, DeepSeek…). Lets your main agent **delegate, fallback or A/B compare** across models. Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/github-models-mcp:latest`.
 
-> 🚧 Roadmap: `github-models-mcp`, `copilot-studio-mcp`, `ms-graph-mcp`. PRs welcome.
+> 🚧 Roadmap: `copilot-studio-mcp`, `ms-graph-mcp`, `azure-foundry-agents-mcp`. PRs welcome.
 
 ---
 
