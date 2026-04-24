@@ -50,6 +50,10 @@ jobs:
             context: ./servers/github-models-mcp
             title: "GitHub Models MCP Server"
             description: "MCP server exposing the free-tier GitHub Models catalog and inference — routing, fallback and A/B compare."
+          - name: azure-ai-foundry-agents-mcp
+            context: ./servers/azure-ai-foundry-agents-mcp
+            title: "Azure AI Foundry Agents MCP Server"
+            description: "Invoke Azure AI Foundry agents (hosted) from any MCP client — list, thread, run, quick_ask."
 
     steps:
       - name: Checkout
