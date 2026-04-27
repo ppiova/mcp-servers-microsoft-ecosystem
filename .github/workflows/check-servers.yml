@@ -1,0 +1,49 @@
+name: Check MCP servers
+
+on:
+  schedule:
+    - cron: "0 9 1 * *"   # 09:00 UTC on the 1st of each month
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Date stamp
+        id: date
+        run: echo "ym=$(date -u +%Y-%m)" >> "$GITHUB_OUTPUT"
+
+      - name: Run server health check
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/check_servers.py
+
+      - name: Append report to job summary
+        if: always()
+        run: cat server-check-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open review issue
+        if: steps.check.outputs.has_findings == 'true'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Monthly MCP server review (${{ steps.date.outputs.ym }})"
+          content-filepath: ./server-check-report.md
+          labels: automated, server-review
