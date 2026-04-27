@@ -38,7 +38,7 @@ jobs:
           args: >-
             --cache
             --max-cache-age 1d
-            --exclude-mail
+            --exclude '^mailto:'
             --accept 200,206,403,429
             --timeout 20
             README.md CONTRIBUTING.md
