@@ -43,7 +43,7 @@ This list complements [`microsoft/mcp`](https://github.com/microsoft/mcp) — th
 First-party servers published by Microsoft product teams.
 
 - **[microsoft/mcp](https://github.com/microsoft/mcp)** — The official catalog of Microsoft MCP server implementations. Includes `Azure.Mcp.Server`, `Fabric.Mcp.Server`, and a `Template.Mcp.Server` scaffold.
-- **[Azure/azure-mcp](https://github.com/Azure/azure-mcp)** — The Azure MCP Server. Exposes **230+ tools** across **45+ Azure services** via a single MCP endpoint. Ships built-in with Visual Studio 2026.
+- **[microsoft/mcp · Azure.Mcp.Server](https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server)** — The Azure MCP Server (formerly `Azure/azure-mcp`, archived 2025-08-25). Exposes **230+ tools** across **45+ Azure services** via a single MCP endpoint. Ships built-in with Visual Studio 2026.
 - **[microsoft/azure-devops-mcp](https://github.com/microsoft/azure-devops-mcp)** — Azure DevOps MCP Server: repos, pipelines, work items, delivery metadata.
 - **[microsoft/fabric-rti-mcp](https://github.com/microsoft/fabric-rti-mcp)** — MCP server for **Microsoft Fabric Real-Time Intelligence**, Eventhouse, Azure Data Explorer (KQL), and other RTI services.
 - **[microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)** — Browser automation MCP server powered by Playwright. The de-facto standard for letting agents drive a real browser.
@@ -56,7 +56,10 @@ First-party servers published by Microsoft product teams.
 
 ### Infrastructure & Management
 
-- **[Azure/azure-mcp](https://github.com/Azure/azure-mcp)** — *(official, see above)*
+- **[microsoft/mcp · Azure.Mcp.Server](https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server)** — *(official, see above)*
+- **[microsoft/azure-skills](https://github.com/microsoft/azure-skills)** — Official agent plugin providing skills and MCP server configurations for Azure scenarios.
+- **[Azure/data-api-builder](https://github.com/Azure/data-api-builder)** — Modern REST, GraphQL endpoints and **MCP tools** for your Azure databases and on-prem stores.
+- **[Azure/aks-mcp](https://github.com/Azure/aks-mcp)** — MCP server that lets AI assistants interact with **Azure Kubernetes Service (AKS)** clusters.
 - **[dminkovski/azure-diagram-mcp](https://github.com/dminkovski/azure-diagram-mcp)** — Turn natural-language prompts into Azure architecture diagrams (PNG) via Python Diagrams + Graphviz.
 - **[erikhoward/adls-mcp-server](https://github.com/erikhoward/adls-mcp-server)** — Microsoft Azure Data Lake Storage Gen2 MCP server.
 - **[dkmaker/mcp-azure-tablestorage](https://github.com/dkmaker/mcp-azure-tablestorage)** — Query Azure Table Storage from an MCP client during local development.
@@ -70,6 +73,7 @@ First-party servers published by Microsoft product teams.
 ### DevOps & CI/CD
 
 - **[microsoft/azure-devops-mcp](https://github.com/microsoft/azure-devops-mcp)** — *(official, see above)*
+- **[Tiberriver256/mcp-server-azure-devops](https://github.com/Tiberriver256/mcp-server-azure-devops)** — Community Azure DevOps MCP server with broad tooling coverage.
 - **[Vortiago/mcp-azure-devops](https://github.com/Vortiago/mcp-azure-devops)** — Azure DevOps MCP server (Python SDK).
 - **[viamus/mcp-azure-devops](https://github.com/viamus/mcp-azure-devops)** — Azure DevOps MCP over HTTP for repos, pipelines, work items, delivery metadata.
 - **[renatogroffe/azdevops-apisec-mcp-audit](https://github.com/renatogroffe/azdevops-apisec-mcp-audit)** — APIsec MCP Discovery & Audit from an Azure DevOps pipeline.
@@ -77,13 +81,17 @@ First-party servers published by Microsoft product teams.
 ### AI Gateway
 
 - **[Azure-Samples/AI-Gateway](https://github.com/Azure-Samples/AI-Gateway)** — Labs that combine **Azure API Management** + Microsoft Foundry + MCP servers to build governed AI gateways.
+- **[Azure-Samples/remote-mcp-apim-functions-python](https://github.com/Azure-Samples/remote-mcp-apim-functions-python)** — Reference sample using **Azure API Management** as an AI Gateway in front of remote MCP servers.
 
 ---
 
 ## Microsoft 365 & Graph
 
+- **[merill/lokka](https://github.com/merill/lokka)** — MCP server for Microsoft 365 with broad **Microsoft Graph** coverage.
 - **[acuvity/mcp-server-microsoft-graph](https://github.com/acuvity/mcp-server-microsoft-graph)** — Microsoft Graph MCP server (users, mail, calendar, Teams).
 - **[bradystroud/mcp-server-microsoft-graph](https://github.com/bradystroud/mcp-server-microsoft-graph)** — Alternative community implementation of Microsoft Graph via MCP.
+- **[InditexTech/mcp-teams-server](https://github.com/InditexTech/mcp-teams-server)** — **Microsoft Teams** MCP server: read messages, create messages, manage channels.
+- **[ryaker/outlook-mcp](https://github.com/ryaker/outlook-mcp)** — Access **Outlook** mail, calendar, and contacts via Microsoft Graph from any MCP client.
 - **[godwin3737/mcp-server-microsoft365-filesearch](https://github.com/godwin3737/mcp-server-microsoft365-filesearch)** — Search files across Microsoft 365 via MCP.
 - **[michMartineau/mcp-server-microsoft-todo](https://github.com/michMartineau/mcp-server-microsoft-todo)** — Microsoft To-Do MCP server written in Go.
 
@@ -92,6 +100,7 @@ First-party servers published by Microsoft product teams.
 ## Fabric, Power BI & Data
 
 - **[microsoft/fabric-rti-mcp](https://github.com/microsoft/fabric-rti-mcp)** — *(official, see above)* — Eventhouse / ADX / KQL via MCP.
+- **[microsoft/skills-for-fabric](https://github.com/microsoft/skills-for-fabric)** — Official collection of skills and MCP systems to operate over **Microsoft Fabric** from CLI, VS Code, or Claude.
 
 > Looking for Power BI, Purview or OneLake MCP servers? Open a PR when you find one — this area is still sparse.
 
@@ -157,6 +166,7 @@ Production-ready templates to bootstrap your own MCP server for Microsoft servic
 
 - **[ppiova/mcp-docker-starter](https://github.com/ppiova/mcp-docker-starter)** — Python **FastMCP** server + **.NET Agent Framework** client, wired via Docker Compose over a private bridge network. Multi-arch GHCR images, SBOM, non-root containers. Ready to fork for your own Microsoft service.
 - **[ppiova/ai-agents-compose-stack](https://github.com/ppiova/ai-agents-compose-stack)** — Multi-agent workflow with **OpenTelemetry + Aspire Dashboard** observability in Compose. Great for wrapping an MCP server with production telemetry.
+- **[Azure-Samples/remote-mcp-functions](https://github.com/Azure-Samples/remote-mcp-functions)** — Landing page for **Remote MCP Server on Azure Functions** with links to all language stacks (Python, .NET, Node, Java).
 - **[microsoft/mcp `Template.Mcp.Server`](https://github.com/microsoft/mcp/tree/main/servers/Template.Mcp.Server)** — Official .NET scaffold for new MCP servers.
 - **[jtucker/mcp-untappd-server-dotnet](https://github.com/jtucker/mcp-untappd-server-dotnet)** — .NET MCP server running as an **Azure Function** (F#). Useful reference pattern for serverless MCP.
 
