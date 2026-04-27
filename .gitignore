@@ -4,3 +4,6 @@ Thumbs.db
 .idea/
 *.log
 node_modules/
+
+# Generated locally by scripts/check_servers.py
+server-check-report.md
