@@ -176,7 +176,7 @@ Production-ready templates to bootstrap your own MCP server for Microsoft servic
 
 - [Introducing Microsoft Agent Framework](https://devblogs.microsoft.com/foundry/introducing-microsoft-agent-framework-the-open-source-engine-for-agentic-ai-apps/) — Azure AI Foundry blog.
 - [Azure MCP Server now built-in with Visual Studio 2026](https://devblogs.microsoft.com/visualstudio/azure-mcp-server-now-built-in-with-visual-studio-2026-a-new-era-for-agentic-workflows/) — VS team on the MCP experience.
-- [Microsoft Fabric MCP Server announcement (2025-10-01)](https://devblogs.microsoft.com/fabric/) — Fabric + MCP integration.
+- [Introducing Fabric MCP (Public Preview)](https://blog.fabric.microsoft.com/en-US/blog/introducing-fabric-mcp-public-preview/) — Microsoft Fabric Blog announcement (2025-10).
 
 ### Talks & videos (community)
 
