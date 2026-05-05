@@ -14,7 +14,7 @@ Answers questions like:
 >
 > *"Which deployments have the relaxed RAI policy?"*
 >
-> *"¿Qué modelos tengo versión 2025 ya desplegados y en qué sub?"*
+> *"Which 2025-version models do I already have deployed and in which subscription?"*
 
 ---
 
@@ -106,7 +106,7 @@ var agent = chat.CreateAIAgent(
     tools: [.. (await mcp.ListToolsAsync()).Cast<AITool>()]);
 
 Console.WriteLine(await agent.RunAsync(
-    "¿Qué deployments de gpt-4o-mini tengo y cuánta capacidad queda en eastus2?"));
+    "Which gpt-4o-mini deployments do I have and how much capacity is left in eastus2?"));
 ```
 
 ---

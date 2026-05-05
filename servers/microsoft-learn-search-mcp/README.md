@@ -95,7 +95,7 @@ var agent = chatClient.CreateAIAgent(
     tools: [.. (await mcp.ListToolsAsync()).Cast<AITool>()]);
 
 Console.WriteLine(await agent.RunAsync(
-    "¿Cómo deploy un Agent Framework sample a Azure Container Apps con managed identity?"));
+    "How do I deploy an Agent Framework sample to Azure Container Apps with managed identity?"));
 ```
 
 ---
