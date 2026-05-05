@@ -8,7 +8,12 @@ For each GitHub repo URL referenced in README.md the script checks:
   - stale (no push in STALE_THRESHOLD_DAYS)
 
 It then runs heuristic GitHub searches for new MCP servers in the
-Microsoft ecosystem that are not already listed.
+Microsoft ecosystem that are not already listed. Discovery candidates
+are:
+  - filtered against `.discovery-ignore` (intentional rejections)
+  - flagged with a Docker-readiness marker when the repo root carries
+    a Dockerfile or compose file
+  - grouped by suggested README section using keyword heuristics
 
 The report is written to `server-check-report.md` and emitted on stdout.
 A `has_findings` output is set in $GITHUB_OUTPUT so the workflow can
@@ -23,17 +28,73 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+# Force UTF-8 so emoji and non-ASCII text in the report print on every host
+# (Windows defaults to cp1252 for stdout). Linux runners are already UTF-8.
+for stream in (sys.stdout, sys.stderr):
+    if hasattr(stream, "reconfigure"):
+        stream.reconfigure(encoding="utf-8", errors="replace")
 
 GITHUB_API = "https://api.github.com"
 TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
 SELF_REPO = "ppiova/mcp-servers-microsoft-ecosystem"
 README_PATH = Path("README.md")
 REPORT_PATH = Path("server-check-report.md")
+IGNORE_PATH = Path(".discovery-ignore")
 
 STALE_THRESHOLD_DAYS = 730  # 2 years
 DISCOVERY_TOP_N = 20
+
+DOCKER_MARKERS = {
+    "dockerfile",
+    "compose.yaml",
+    "compose.yml",
+    "docker-compose.yaml",
+    "docker-compose.yml",
+}
+
+# Ordered: more specific sections first. The first rule whose keywords
+# match the repo's full name + description wins. The empty-keyword fallback
+# at the end maps everything else to "Other".
+SECTION_RULES: list[tuple[str, list[str]]] = [
+    ("Microsoft 365 & Graph", [
+        "microsoft graph", " graph ", "m365", "microsoft 365",
+        "outlook", "teams", "to-do", "todo", "exchange",
+        "sharepoint", "onedrive",
+    ]),
+    ("Fabric, Power BI & Data", [
+        "fabric", "power bi", "powerbi", "onelake", "purview", "synapse",
+    ]),
+    ("Power Platform & Copilot Studio", [
+        "copilot studio", "power platform", "power apps", "power automate",
+        "dataverse",
+    ]),
+    ("Azure / DevOps & CI/CD", [
+        "azure devops", "azdevops", "azure pipelines",
+    ]),
+    ("Azure / FinOps & Pricing", [
+        "finops", "azure pricing", " cost ",
+    ]),
+    ("Azure / AI Gateway", [
+        "api management", "apim", "ai gateway",
+    ]),
+    ("Azure / Infrastructure & Management", [
+        "azure", "aks ", "kubernetes", "data lake", "table storage",
+        "resource graph", "openai",
+    ]),
+    ("Developer Tools & Microsoft Learn", [
+        "microsoft learn", "ms docs",
+    ]),
+    ("Starters & Templates", [
+        "template", "starter", "scaffold", "boilerplate",
+        "azure functions", "remote-mcp",
+    ]),
+    ("GitHub", [" github "]),
+    ("Other", []),
+]
 
 GITHUB_URL_RE = re.compile(
     r"https?://github\.com/([A-Za-z0-9][\w.-]*)/([A-Za-z0-9][\w.-]*?)(?:[/#?].*)?(?=[\s)\"'>]|$)",
@@ -107,8 +168,45 @@ def validate(owner: str, repo: str) -> dict:
     return info
 
 
-def discover(known: set[str]) -> list[dict]:
-    """Search GitHub for MCP servers tied to Microsoft services."""
+def load_ignore() -> set[str]:
+    """Read `.discovery-ignore`. One `owner/repo` per line, `#` for comments."""
+    if not IGNORE_PATH.exists():
+        return set()
+    out: set[str] = set()
+    for line in IGNORE_PATH.read_text(encoding="utf-8").splitlines():
+        line = line.split("#", 1)[0].strip()
+        if line:
+            out.add(line.lower())
+    return out
+
+
+def detect_docker(owner: str, repo: str) -> bool:
+    """Return True if the repo root carries a Dockerfile or compose file."""
+    status, data = gh_request(f"/repos/{owner}/{repo}/contents/")
+    if status != 200 or not isinstance(data, list):
+        return False
+    names = {item.get("name", "").lower() for item in data if isinstance(item, dict)}
+    return bool(names & DOCKER_MARKERS)
+
+
+def suggest_section(full_name: str, description: str) -> str:
+    """Pick the best-matching README section for a candidate repo."""
+    text = f" {full_name.lower()} {description.lower()} "
+    for section, keywords in SECTION_RULES:
+        if not keywords:
+            return section
+        if any(kw in text for kw in keywords):
+            return section
+    return "Other"
+
+
+def discover(known: set[str], ignore: set[str]) -> list[dict]:
+    """Search GitHub for MCP servers tied to Microsoft services.
+
+    Skips repos already listed in README (`known`) or explicitly rejected
+    in `.discovery-ignore` (`ignore`). Top results are enriched with a
+    Docker-readiness flag and a suggested README section.
+    """
     candidates: dict[str, dict] = {}
     cutoff = (datetime.now(timezone.utc) - timedelta(days=365)).strftime("%Y-%m-%d")
     queries = [
@@ -129,7 +227,10 @@ def discover(known: set[str]) -> list[dict]:
             continue
         for item in data.get("items", []):
             full = item["full_name"].lower()
-            if full == SELF_REPO.lower() or full in known:
+            if full == SELF_REPO.lower() or full in known or full in ignore:
+                continue
+            # Skip archived repos: there's no value in surfacing dead code.
+            if item.get("archived"):
                 continue
             existing = candidates.get(full)
             if not existing or item["stargazers_count"] > existing["stars"]:
@@ -140,7 +241,12 @@ def discover(known: set[str]) -> list[dict]:
                     "stars": item["stargazers_count"],
                     "pushed_at": item.get("pushed_at"),
                 }
-    return sorted(candidates.values(), key=lambda x: x["stars"], reverse=True)[:DISCOVERY_TOP_N]
+    top = sorted(candidates.values(), key=lambda x: x["stars"], reverse=True)[:DISCOVERY_TOP_N]
+    for c in top:
+        owner, repo = c["full_name"].split("/", 1)
+        c["has_docker"] = detect_docker(owner, repo)
+        c["section"] = suggest_section(c["full_name"], c["description"])
+    return top
 
 
 def main() -> int:
@@ -169,13 +275,15 @@ def main() -> int:
         if bucket is not None:
             bucket.append(info)
 
-    candidates = discover(known)
+    ignore = load_ignore()
+    candidates = discover(known, ignore)
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     lines = [
         f"_Generated by `check-servers.yml` on {today}._",
         "",
-        f"Validated **{len(repos)}** GitHub repos referenced in `README.md`.",
+        f"Validated **{len(repos)}** GitHub repos referenced in `README.md`. "
+        f"Discovery ignore-list: **{len(ignore)}** entries.",
         "",
     ]
     if removed:
@@ -217,15 +325,33 @@ def main() -> int:
         lines.append("")
         lines.append(
             "> Heuristic search across `topic:mcp-server` and Microsoft-service keywords. "
-            "Review each before adding; some may be unrelated."
+            "Review each before adding; some may be unrelated. "
+            "To suppress a repo from future runs, add it to `.discovery-ignore`."
         )
         lines.append("")
-        for c in candidates:
-            desc = (c["description"] or "")[:140].replace("\n", " ").strip()
-            lines.append(
-                f"- [`{c['full_name']}`]({c['url']}) — stars: {c['stars']} — {desc}"
-            )
+        lines.append(
+            "Legend: 🐳 = repo root carries a Dockerfile or compose file."
+        )
         lines.append("")
+
+        grouped: dict[str, list[dict]] = defaultdict(list)
+        for c in candidates:
+            grouped[c.get("section", "Other")].append(c)
+        # Render sections in the order defined by SECTION_RULES, then any
+        # leftover ("Other" or unknown) at the end.
+        section_order = [name for name, _ in SECTION_RULES]
+        for section in section_order:
+            items = grouped.get(section)
+            if not items:
+                continue
+            lines.append(f"### {section}")
+            for c in items:
+                docker = "🐳 " if c.get("has_docker") else ""
+                desc = (c["description"] or "")[:140].replace("\n", " ").strip()
+                lines.append(
+                    f"- {docker}[`{c['full_name']}`]({c['url']}) — stars: {c['stars']} — {desc}"
+                )
+            lines.append("")
 
     has_findings = bool(removed or renamed or archived or stale or candidates)
     if not has_findings and not errors:

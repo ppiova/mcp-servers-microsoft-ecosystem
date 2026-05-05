@@ -1,0 +1,100 @@
+name: Suggest an MCP server
+description: Propose adding a new MCP server to the catalog.
+title: "[Suggestion] <owner/repo>"
+labels: ["server-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the catalog current! Please fill in the fields below.
+        Refer to [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) for the entry format and review checklist.
+
+  - type: input
+    id: repo_url
+    attributes:
+      label: Repository URL
+      description: Public GitHub URL of the MCP server.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Suggested README section
+      description: Where in the catalog do you think this entry belongs?
+      options:
+        - Official Microsoft MCP Servers
+        - Azure / Infrastructure & Management
+        - Azure / FinOps & Pricing
+        - Azure / DevOps & CI/CD
+        - Azure / AI Gateway
+        - Microsoft 365 & Graph
+        - Fabric, Power BI & Data
+        - Power Platform & Copilot Studio
+        - GitHub
+        - Developer Tools & Microsoft Learn
+        - Playwright & Browser Automation
+        - Starters & Templates
+        - Security & Governance
+        - Learning Resources
+        - Not sure / Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: One-sentence description
+      description: How would you describe this server in the catalog? Keep it short and factual.
+      placeholder: "MCP server for X that lets agents do Y."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: docker_ready
+    attributes:
+      label: Docker-ready?
+      description: Does the repo ship a `Dockerfile` or `compose.yaml` at its root?
+      options:
+        - "Yes — has Dockerfile or compose file"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: SPDX identifier preferred (e.g. MIT, Apache-2.0). Paid-only or behind-login resources will be rejected.
+      placeholder: MIT
+    validations:
+      required: true
+
+  - type: textarea
+    id: ms_integration
+    attributes:
+      label: Which Microsoft product or service does it integrate with?
+      description: One sentence is fine. Required for inclusion (no MS integration = no fit).
+      placeholder: "Integrates with Azure Resource Graph to query subscription inventory."
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes (optional)
+      description: Maintenance status, related projects, anything reviewers should know.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Confirmation
+      options:
+        - label: The repository is **public** and **runnable** (not just a README).
+          required: true
+        - label: I've checked it isn't already listed in the catalog.
+          required: true
+        - label: I'm not the maintainer, **or** I have disclosed this as a self-suggestion.
+          required: false
