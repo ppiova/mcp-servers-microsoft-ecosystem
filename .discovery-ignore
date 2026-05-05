@@ -25,3 +25,26 @@ Azure-Samples/python-mcp-demos
 
 # SQL Server perf tool — borderline; revisit if a SQL Server section is added
 erikdarlingdata/PerformanceMonitor
+
+# 2026-05 review (#10) rejections
+
+# Daniel Miessler's "fabric" CLI, NOT Microsoft Fabric — confusing search match
+ksylvan/fabric-mcp
+
+# Curated list / meta-resource, not an MCP server
+WagnerAgent/awesome-mcp-servers-devops
+
+# Spring-AI tutorial / sample, not an MCP server
+Mark7766/spring-ai-apps
+
+# Generic MCP framework, not Microsoft-ecosystem specific
+alpic-ai/skybridge
+
+# Draw.io diagram tool — Draw.io is not a Microsoft service
+simonkurtz-MSFT/drawio-mcp-server
+
+# Language-specific stacks already covered by the umbrella
+# Azure-Samples/remote-mcp-functions entry in Starters & Templates
+Azure-Samples/remote-mcp-functions-dotnet
+Azure-Samples/remote-mcp-functions-python
+Azure-Samples/remote-mcp-functions-typescript
