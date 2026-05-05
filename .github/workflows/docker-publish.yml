@@ -54,6 +54,10 @@ jobs:
             context: ./servers/microsoft-foundry-agents-mcp
             title: "Microsoft Foundry Agents MCP Server"
             description: "Invoke Microsoft Foundry hosted agents from any MCP client — v2 Responses API (azure-ai-projects 2.x)."
+          - name: ms-graph-mcp
+            context: ./servers/ms-graph-mcp
+            title: "Microsoft Graph MCP Server"
+            description: "Read-only Microsoft Graph MCP server for tenant directory & identity insights — users, groups, apps, service principals, role assignments."
 
     steps:
       - name: Checkout

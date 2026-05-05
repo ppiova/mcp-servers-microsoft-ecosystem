@@ -163,8 +163,9 @@ Reference implementations maintained in this repository. Every server ships a mu
 - 🐳 **[`azure-openai-deployments-mcp`](./servers/azure-openai-deployments-mcp/)** — FinOps-friendly inventory of your Azure OpenAI **accounts, deployments and region quotas**. Great for *"where is gpt-4o-mini deployed and how much capacity is left?"* Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/azure-openai-deployments-mcp:latest`.
 - 🐳 **[`github-models-mcp`](./servers/github-models-mcp/)** — Bridge any MCP client to the **free-tier GitHub Models** (OpenAI GPT-4.1, Microsoft Phi-4, Meta Llama 3.3, Mistral, Cohere, DeepSeek…). Lets your main agent **delegate, fallback or A/B compare** across models. Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/github-models-mcp:latest`.
 - 🐳 **[`microsoft-foundry-agents-mcp`](./servers/microsoft-foundry-agents-mcp/)** — Invoke your **Microsoft Foundry hosted agents** (v2 Responses API, `azure-ai-projects` 2.x) from any MCP client. Discover, converse and delegate to the specialized domain agents you already built in Foundry. Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/microsoft-foundry-agents-mcp:latest`.
+- 🐳 **[`ms-graph-mcp`](./servers/ms-graph-mcp/)** — Read-only **Microsoft Graph** MCP server for the IT-admin / security / compliance angle: tenant inventory of users, groups, apps, service principals, memberships and directory role assignments. App-only auth via `Directory.Read.All`. Image: `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/ms-graph-mcp:latest`.
 
-> 🚧 Roadmap: `copilot-studio-mcp`, `ms-graph-mcp`, `azure-openai-chat-mcp`. PRs welcome.
+> 🚧 Roadmap: `copilot-studio-mcp`, `azure-openai-chat-mcp`. PRs welcome.
 
 ---
 
