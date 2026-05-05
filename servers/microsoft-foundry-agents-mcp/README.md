@@ -144,8 +144,8 @@ Try:
 ```
 list_agents            {}
 get_agent              { "agent_name": "your-agent" }
-quick_ask              { "agent_name": "your-agent", "prompt": "Dame tres ideas de campaña para Q2." }
-create_conversation    { "initial_message": "Hola" }
+quick_ask              { "agent_name": "your-agent", "prompt": "Give me three campaign ideas for Q2." }
+create_conversation    { "initial_message": "Hello" }
 ```
 
 ---

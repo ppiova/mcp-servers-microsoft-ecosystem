@@ -10,8 +10,9 @@ Each subfolder is a self-contained, production-grade reference implementation.
 | [`azure-openai-deployments-mcp`](./azure-openai-deployments-mcp/) | `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/azure-openai-deployments-mcp:latest` | Azure OpenAI accounts + deployments + region quotas (FinOps). |
 | [`github-models-mcp`](./github-models-mcp/) | `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/github-models-mcp:latest` | GitHub Models catalog + free-tier inference (routing / fallback / compare). |
 | [`microsoft-foundry-agents-mcp`](./microsoft-foundry-agents-mcp/) | `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/microsoft-foundry-agents-mcp:latest` | Invoke your Microsoft Foundry hosted agents from any MCP client (v2 Responses API, SDK 2.x). |
+| [`ms-graph-mcp`](./ms-graph-mcp/) | `ghcr.io/ppiova/mcp-servers-microsoft-ecosystem/ms-graph-mcp:latest` | Read-only Microsoft Graph for tenant directory & identity insights — users, groups, apps, service principals, role assignments. App-only auth. |
 
-> 🚧 More servers land iteratively. Good candidates on the roadmap: `copilot-studio-mcp`, `ms-graph-mcp`, `azure-openai-chat-mcp`. **PRs welcome** — see the [contribution guide](../CONTRIBUTING.md).
+> 🚧 More servers land iteratively. Good candidates on the roadmap: `copilot-studio-mcp`, `azure-openai-chat-mcp`. **PRs welcome** — see the [contribution guide](../CONTRIBUTING.md).
 
 ## Conventions
 
