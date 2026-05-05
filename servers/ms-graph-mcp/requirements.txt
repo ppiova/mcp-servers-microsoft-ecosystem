@@ -1,0 +1,3 @@
+mcp>=1.3.0
+azure-identity>=1.17.0
+msgraph-sdk>=1.56.0
