@@ -1,0 +1,27 @@
+# Repositories that the discovery pass in `scripts/check_servers.py` should
+# never surface again. One `owner/repo` per line. Lines starting with `#`
+# and blank lines are ignored. Matching is case-insensitive.
+#
+# Add an entry here when a candidate has been reviewed and intentionally
+# rejected, so the monthly report stays focused on genuinely new options.
+
+# Generic chat / proxy / IAM tools that aren't Microsoft-ecosystem MCP servers
+danny-avila/LibreChat
+casdoor/casdoor
+BeehiveInnovations/pal-mcp-server
+kardolus/chatgpt-cli
+
+# Not an MCP server — protocol SDK already implicit in the README
+modelcontextprotocol/csharp-sdk
+
+# Self-deprecated by its own README ("moved to cloud")
+microsoft-foundry/mcp-foundry
+
+# Sample apps that *use* MCP but aren't MCP servers themselves
+Azure-Samples/eShopLite
+Azure-Samples/azure-ai-travel-agents
+Azure-Samples/mcp-agent-langchainjs
+Azure-Samples/python-mcp-demos
+
+# SQL Server perf tool — borderline; revisit if a SQL Server section is added
+erikdarlingdata/PerformanceMonitor

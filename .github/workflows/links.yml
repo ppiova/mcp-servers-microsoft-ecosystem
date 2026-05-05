@@ -39,6 +39,7 @@ jobs:
             --cache
             --max-cache-age 1d
             --exclude '^mailto:'
+            --exclude '^https?://(www\.)?linkedin\.com'
             --accept 200,206,403,429
             --timeout 20
             README.md CONTRIBUTING.md
