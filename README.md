@@ -15,6 +15,8 @@ This list complements [`microsoft/mcp`](https://github.com/microsoft/mcp) — th
 - ✅ Clients, starters, learning resources, and security guidance
 - ✅ Pointers to working samples you can clone and run today
 
+> **Last full review:** 2026-10 — all linked repositories were checked for removal, archival, renames, and staleness. Legend: 🐳 = Docker-ready, 📘 = documentation, *(official)* = published by a Microsoft/GitHub product team.
+
 > **New to MCP?** MCP is the open protocol — often called *"USB-C for AI agents"* — that lets any LLM client (Claude, GitHub Copilot, Cursor, VS Code, Copilot Studio, Agent Framework…) talk to any tool server through a single standard. Think of each server below as a **universal adapter** between AI and a specific Microsoft product.
 
 ---
@@ -88,6 +90,7 @@ First-party servers published by Microsoft product teams.
 
 - **[Azure-Samples/AI-Gateway](https://github.com/Azure-Samples/AI-Gateway)** — Labs that combine **Azure API Management** + Microsoft Foundry + MCP servers to build governed AI gateways.
 - **[Azure-Samples/remote-mcp-apim-functions-python](https://github.com/Azure-Samples/remote-mcp-apim-functions-python)** — Reference sample using **Azure API Management** as an AI Gateway in front of remote MCP servers.
+- **[microsoft/mcp-gateway](https://github.com/microsoft/mcp-gateway)** — Official reverse proxy and management layer for MCP servers: session-aware stateful routing and lifecycle management on **Kubernetes**.
 
 ---
 
@@ -108,6 +111,10 @@ First-party servers published by Microsoft product teams.
 - **[guillehr2/Excel-MCP-Server-Master](https://github.com/guillehr2/Excel-MCP-Server-Master)** — MCP server for automated **Excel** workbook operations without requiring desktop Excel.
 - **[godwin3737/mcp-server-microsoft365-filesearch](https://github.com/godwin3737/mcp-server-microsoft365-filesearch)** — Search files across Microsoft 365 via MCP.
 - **[michMartineau/mcp-server-microsoft-todo](https://github.com/michMartineau/mcp-server-microsoft-todo)** — Microsoft To-Do MCP server written in Go.
+- **[mpalermiti/outlook-mcp](https://github.com/mpalermiti/outlook-mcp)** — Outlook personal-account MCP server over Graph: 72 tools for mail, calendar, contacts, tasks, and delta queries.
+- **[tecnologicachile/mail-mcp](https://github.com/tecnologicachile/mail-mcp)** — Rust MCP server for IMAP/SMTP/EWS/**Graph** mail with OAuth2 and multi-account support (Microsoft 365, Hotmail, Gmail).
+- **[mdwsk88/ms-365-21v-mcp-server](https://github.com/mdwsk88/ms-365-21v-mcp-server)** — MCP gateway for **Microsoft 365 operated by 21Vianet** (mail, calendar, OneDrive, SharePoint).
+- **[OpenAdminOS/greybeard](https://github.com/OpenAdminOS/greybeard)** — Agent skills + MCP servers for **Microsoft 365, Intune, and Entra** administration, with a human approval gate on every tenant write.
 
 ---
 
@@ -119,7 +126,12 @@ First-party servers published by Microsoft product teams.
 - 🐳 **[santhoshravindran7/Fabric-Analytics-MCP](https://github.com/santhoshravindran7/Fabric-Analytics-MCP)** — MCP server for **Microsoft Fabric Analytics** with secure auth-backed access.
 - **[tmdaidevs/Force-Fabric-MCP-Server](https://github.com/tmdaidevs/Force-Fabric-MCP-Server)** — Fabric optimization MCP server with diagnostics and optional auto-fix workflows.
 
-> Looking for Power BI, Purview or OneLake MCP servers? Open a PR when you find one — this area is still sparse.
+- **[maxanatsko/mcp-engine-public](https://github.com/maxanatsko/mcp-engine-public)** — **SemanticOps MCP** (formerly MCP Engine): read **Power BI** model structure, run DAX, and modify semantic models.
+- **[sulaiman013/powerbi-mcp](https://github.com/sulaiman013/powerbi-mcp)** — Natural-language access to **Power BI** datasets over MCP.
+- **[HorizunGroup/horizun-pbi-mcp](https://github.com/HorizunGroup/horizun-pbi-mcp)** — Build, audit, and repair **Power BI Desktop** models and PBIP reports (DAX, TOM, TMDL, PBIR).
+- **[Aaronontheweb/mssql-mcp](https://github.com/Aaronontheweb/mssql-mcp)** — **SQL Server** MCP server written in C#.
+
+> Looking for Purview or OneLake MCP servers? Open a PR when you find one — this area is still sparse.
 
 ---
 
@@ -128,7 +140,7 @@ First-party servers published by Microsoft product teams.
 - **[microsoft/mcsmcp](https://github.com/microsoft/mcsmcp)** — Official MS lab for creating an MCP server and using it inside **Microsoft Copilot Studio**.
 - **[microsoft/pp-mcp](https://github.com/microsoft/pp-mcp)** — Official MS **Power Platform** MCP labs and samples.
 - **[microsoft/Dataverse-skills](https://github.com/microsoft/Dataverse-skills)** — Official MS skills for AI coding agents wrapping the **Dataverse** MCP server, CLI, Python SDK, and PAC CLI.
-- **[aschauera/MCPinCopilotStudio](https://github.com/aschauera/MCPinCopilotStudio)** — Demonstrations of MCP server implementations consumed by **Copilot Studio** agents.
+- **[aschauera/mcp-servers](https://github.com/aschauera/mcp-servers)** — Demonstrations of MCP server implementations consumed by **Copilot Studio** agents.
 - **[mafzaal/d365fo-client](https://github.com/mafzaal/d365fo-client)** — Dynamics 365 Finance & Operations MCP server and Python client for D365 F&O workflows.
 - **[mwhesse/dataverse-mcp](https://github.com/mwhesse/dataverse-mcp)** — MCP server for Dataverse schema operations (tables, columns, relationships, option sets).
 - **[neronotte/Greg.Xrm.Mcp](https://github.com/neronotte/Greg.Xrm.Mcp)** — Dataverse-focused MCP server framework and appmaker tooling for Power Platform development.
@@ -192,6 +204,7 @@ Production-ready templates to bootstrap your own MCP server for Microsoft servic
 - **[ppiova/ai-agents-compose-stack](https://github.com/ppiova/ai-agents-compose-stack)** — Multi-agent workflow with **OpenTelemetry + Aspire Dashboard** observability in Compose. Great for wrapping an MCP server with production telemetry.
 - **[Azure-Samples/remote-mcp-functions](https://github.com/Azure-Samples/remote-mcp-functions)** — Landing page for **Remote MCP Server on Azure Functions** with links to all language stacks (Python, .NET, Node, Java).
 - **[microsoft/mcp `Template.Mcp.Server`](https://github.com/microsoft/mcp/tree/main/servers/Template.Mcp.Server)** — Official .NET scaffold for new MCP servers.
+- **[microsoft/mcp-dotnet-samples](https://github.com/microsoft/mcp-dotnet-samples)** — Official samples for building and consuming MCP servers and clients with **.NET**.
 - **[jtucker/mcp-untappd-server-dotnet](https://github.com/jtucker/mcp-untappd-server-dotnet)** — .NET MCP server running as an **Azure Function** (F#). Useful reference pattern for serverless MCP.
 
 ---

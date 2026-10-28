@@ -65,3 +65,14 @@ dotnet-presentations/ai-workshop
 
 # Agent sample that consumes MCP servers, not an MCP server itself
 Azure-Samples/openai-mcp-agent-dotnet
+
+# 2026-10 review rejections (generic / non-Microsoft focus or not MCP servers)
+bytebase/dbhub
+CursorTouch/Windows-MCP
+ridafkih/keeper.sh
+agentic-community/mcp-gateway-registry
+stacklok/toolhive-studio
+merill/mcp-entra-design
+damienbod/McpSecurity
+TALXIS/tools-cli
+zmustafa/AzureSupportAgent
