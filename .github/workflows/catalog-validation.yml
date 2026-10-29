@@ -1,0 +1,41 @@
+name: Validate MCP catalog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".discovery-ignore"
+      - "README.md"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/catalog-validation.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".discovery-ignore"
+      - "README.md"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/catalog-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Validate catalog structure
+        run: python scripts/validate_catalog.py
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v

@@ -4,6 +4,8 @@ Thumbs.db
 .idea/
 *.log
 node_modules/
+__pycache__/
+*.py[cod]
 
 # Generated locally by scripts/check_servers.py
 server-check-report.md
