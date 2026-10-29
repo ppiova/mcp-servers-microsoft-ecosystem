@@ -44,6 +44,8 @@ Before submitting a PR, verify:
 - [ ] License is present and permissive (MIT / Apache-2.0 / similar). Note any exceptions in the PR description.
 - [ ] Not already listed elsewhere in the catalog.
 
+Pull requests also run automated link checks and catalog validation. Catalog validation checks `.discovery-ignore` syntax and consistency, then runs the discovery-script unit tests without making live GitHub API calls.
+
 ## How to remove / update an entry
 
 - **Broken / archived / link-rotten** → PR to remove. Keep the commit message short: `remove dead link: owner/repo`.
